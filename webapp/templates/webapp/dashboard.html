@@ -1,0 +1,121 @@
+{% extends 'webapp/base.html' %} {% block content %}
+
+<h5> Welcome, {{user}}!</h5>
+
+<hr>
+
+<a class="btn btn-outline-primary btn-sm" href="{% url 'create-director' %}">
+    Create a new Director &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+</a>
+
+<hr>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Date Created </th>
+            <th scope="col"> View </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if directors %} {% for director in directors %}
+        <tr>
+            <td> {{ director.id }} </td>
+            <td> {{ director.director_name }} </td>
+            <td> {{ director.date_created }} </td>
+            <td>
+                <a class="btn btn-success btn-sm" href="{% url 'director' director.id %}"> <i class="fa fa-eye" aria-hidden="true"></i> </a>
+            </td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+            <td colspan="4"> No directors found. </td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+
+<a class="btn btn-outline-primary btn-sm" href="{% url 'create-genre' %}">
+    Create a Genre &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+</a>
+
+<hr>
+<!-- Create Genre Form -->
+<table class="table table-hover table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> Name </th>
+            <th scope="col"> Date Created </th>
+            <th scope="col"> View </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if genres %} {% for genre in genres %}
+        <tr>
+            <td> {{ genre.id }} </td>
+            <td> {{ genre.genre_name }} </td>
+            <td> {{ genre.date_created }} </td>
+            <td>
+                <a class="btn btn-success btn-sm" href="{% url 'genre' genre.id %}"> <i class="fa fa-eye" aria-hidden="true"></i> </a>
+            </td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+            <td colspan="4"> No genres found. </td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+
+<!-- Movie Table -->
+<a class="btn btn-outline-primary btn-sm" href="{% url 'create-movie' %}">
+    Create a new movie &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+</a>
+<hr>
+<table class="table table-hover table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> Title </th>
+            <th scope="col"> Length </th>
+            <th scope="col"> Genre </th>
+            <th scope="col"> Premiere </th>
+            <th scope="col"> Imdb Url </th>
+            <th scope="col"> Imdb Score </th>
+            <th scope="col"> Short Desc </th>
+            <th scope="col"> Director </th>
+            <th scope="col"> Our Review </th>
+            <th scope="col"> Our Score </th>
+            <th scope="col"> Date joined </th>
+            <th scope="col"> View </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if movies %} {% for movie in movies %}
+        <tr>
+            <td> {{movie.id}} </td>
+            <td> {{movie.title}} </td>
+            <td> {{movie.length}} </td>
+            <td> {{movie.genre}} </td>
+            <td> {{movie.premiere}} </td>
+            <td> {{movie.imbd_url}} </td>
+            <td> {{movie.imdb_score}} </td>
+            <td> {{movie.short_desc}} </td>
+            <td> {{movie.director}} </td>
+            <td> {{movie.review}} </td>
+            <td> {{movie.site_score}} </td>
+            <td> {{movie.date_created}} </td>
+            <td>
+                <a class="btn btn-success btn-sm" href="{% url 'movie' movie.id %}"> <i class="fa fa-eye" aria-hidden="true"></i> </a>
+            </td>
+        </tr>
+        {% endfor %} {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

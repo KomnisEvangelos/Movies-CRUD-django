@@ -1,0 +1,24 @@
+{% extends 'webapp/base.html' %} {% load static %} {% block content %}
+<section class="about-us-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-us-content">
+                    <h2>About Us</h2>
+                    <p>Welcome to Movies Me! We are passionate about movies and wanted to create a platform where movie enthusiasts can come together, discover new films, rate and review their favorites, and connect with others who share their love for cinema.</p>
+                    <p>At Movies Me, we believe that every movie has a story to tell and that each viewer's experience is unique. Whether you're a casual moviegoer or a die-hard cinephile, Movies Me is the place for you to explore, discuss, and celebrate
+                        the magic of cinema.</p>
+                    <p>Our mission is to provide a user-friendly and engaging platform that empowers movie lovers to share their thoughts, discover new films, and connect with like-minded individuals. We're committed to creating a welcoming community where
+                        everyone feels valued and inspired to explore the wonderful world of movies.</p>
+                    <p>Join us on this cinematic journey and let's make Movies Me your go-to destination for all things movies!</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-us-image">
+                    <img src="{% static 'images/about-us.jpg' %}" alt="About Us Image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

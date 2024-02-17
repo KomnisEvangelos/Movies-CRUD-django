@@ -1,0 +1,50 @@
+{% extends 'webapp/base.html' %} {% block content %}
+<section class="browse-section">
+    <div class="container">
+
+        <form method="GET" class="form-inline">
+            <label for="category">Filter by Category:</label>
+            <select name="category" id="category" class="form-control mr-2">
+                <option value="">All Categories</option>
+                {% for genre in genres %}
+                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary">Apply Category Filter</button>
+        </form>
+
+        <form method="GET" class="form-inline">
+            <label for="director">Filter by Director:</label>
+            <select name="director" id="director" class="form-control mr-2">
+                <option value="">All Directors</option>
+                {% for director in directors %}
+                <option value="{{ director.director_name }}">{{ director.director_name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary">Apply Director Filter</button>
+        </form>
+
+
+
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            {% for movie in movies %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card mb-4">
+                    <img src="{{ movie.poster }}" class="card-img-top" alt="{{ movie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">Length: {{ movie.length }}h</p>
+                        <p class="card-text">Genre: {{ movie.genre }}</p>
+                        <p class="card-text">Premiere: {{ movie.premiere }}</p>
+                        <a href="{% url 'movie-details' movie.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

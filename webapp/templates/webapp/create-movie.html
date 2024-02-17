@@ -1,0 +1,43 @@
+{% extends 'webapp/base.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<body>
+    <div class="container bg-light shadow-md p-5 form-layout">
+        <h3> Create Movie </h3>
+        <hr>
+        <br>
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %} {{ form.title|as_crispy_field }}
+            <br> {{ form.length|as_crispy_field }}
+            <br>
+            <label for="id_genre">Genre:</label>
+            <select name="genre" id="id_genre" class="form-control">
+                {% for genre in genres %}
+                <option value="{{ genre.genre_name }}">{{ genre.genre_name }}</option>
+                {% endfor %}
+            </select>
+            <br> {{ form.premiere|as_crispy_field }}
+            <br> {{ form.imbd_url|as_crispy_field }}
+            <br> {{ form.imdb_score|as_crispy_field }}
+            <br> {{ form.short_desc|as_crispy_field }}
+            <br>
+            <label for="id_director">Director:</label>
+            <select name="director" id="id_director" class="form-control">
+                {% for director in directors %}
+                <option value="{{ director.id }}">{{ director.director_name }}</option>
+                {% endfor %}
+            </select>
+            <br> {{ form.review|as_crispy_field }}
+            <br> {{ form.site_score|as_crispy_field }}
+            <br> {{ form.poster|as_crispy_field }}
+            <br>
+            <button type="submit" class="btn btn-primary"> 
+                Create Movie &nbsp; <i class="fa fa-check" aria-hidden="true"></i>
+            </button> &nbsp;
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary"> 
+                Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </form>
+    </div>
+    <br>
+</body>
+{% endblock %}

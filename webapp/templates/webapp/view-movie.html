@@ -1,0 +1,47 @@
+{% extends 'webapp/base.html' %} {% block content %}
+
+<div class="card">
+
+
+    <div class="card-body">
+
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;
+
+        <strong>   
+            {{movie.title|upper}}
+        </strong>
+
+        <hr>
+
+
+
+
+        <p> <strong> ID: </strong> {{movie.id}} </p>
+
+        <p> <strong> Title: </strong> {{movie.title}} </p>
+
+        <p> <strong> Length: </strong> {{movie.length}} </p>
+        <p> <strong> Genre: </strong> {{movie.genre}} </p>
+
+        <p> <strong> Premiere: </strong> {{movie.premiere}} </p>
+        <p> <strong> Imdb Url: </strong> {{movie.imbd_url}} </p>
+        <p> <strong> Short Desc: </strong> {{movie.short_desc}} </p>
+        <p> <strong> Imdb Score: </strong> {{movie.imdb_score}} </p>
+        <p> <strong> Director: </strong> {{movie.director.director_name}} </p>
+        <p> <strong> Our Review: </strong> {{movie.review}} </p>
+        <p> <strong> Our Score: </strong> {{movie.site_score}} </p>
+        <p> <strong> Creation date: </strong> {{movie.date_created}} </p>
+
+
+    </div>
+
+
+</div>
+
+<br>
+
+<a href="{% url 'dashboard' %}" class="btn btn-secondary"> Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a> &nbsp;
+
+<a href="{% url 'update-movie' movie.id %}" class="btn btn-info"> Update Movie &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a> &nbsp;
+
+<a href="{% url 'delete-movie' movie.id %}" class="btn btn-danger"> Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i> </a> {% endblock %}

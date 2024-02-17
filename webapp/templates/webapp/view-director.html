@@ -1,0 +1,27 @@
+{% extends 'webapp/base.html' %} {% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;
+        <strong>{{ director.direcotor_name }}</strong>
+        <hr>
+
+        <p><strong>ID:</strong> {{ director.id }}</p>
+        <p><strong>Name:</strong> {{ director.director_name }}</p>
+        <p><strong>Date Joined:</strong> {{ director.date_created }}</p>
+    </div>
+</div>
+
+<br>
+
+<a href="{% url 'dashboard' %}" class="btn btn-secondary">
+    Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+</a>
+
+<a href="{% url 'update-director' director.id %}" class="btn btn-info">
+    Update Director &nbsp; <i class="fa fa-plus" aria-hidden="true"></i>
+</a>
+
+<a href="{% url 'delete-director' director.id %}" class="btn btn-danger">
+    Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i>
+</a> {% endblock %}
